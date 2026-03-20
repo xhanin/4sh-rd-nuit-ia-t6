@@ -1,7 +1,7 @@
 // src/App.tsx
 // Root component. Owns the DnD context and wires the store to the UI.
 
-import { useEffect, useCallback, useState } from 'react'
+import { useEffect, useCallback, useState, useRef } from 'react'
 import {
   DndContext,
   PointerSensor,
@@ -34,6 +34,9 @@ import { checkPlacement } from '@/game/validation'
 import type { Rotation, CellCoord } from '@/types'
 
 import styles from './App.module.css'
+
+// 20px cell + 2px gap in the inventory thumbnail
+const THUMBNAIL_CELL = 22
 
 export default function App() {
   // Store state
@@ -69,6 +72,9 @@ export default function App() {
     rotation: Rotation
   } | null>(null)
 
+  // Offset (in grid cells) between pointer position and top-left of piece shape
+  const dragOffsetRef = useRef({ x: 0, y: 0 })
+
   const [previewPlacement, setPreviewPlacement] = useState<{
     cells: CellCoord[]
     color: string
@@ -102,6 +108,20 @@ export default function App() {
       } | undefined
       if (data) {
         setActiveDrag({ definitionId: data.definitionId, rotation: data.rotation })
+
+        // Compute pointer offset within the piece thumbnail
+        const initialRect = event.active.rect.current.initial
+        const activatorEvent = event.activatorEvent as PointerEvent
+        if (initialRect) {
+          const relX = activatorEvent.clientX - initialRect.left
+          const relY = activatorEvent.clientY - initialRect.top
+          dragOffsetRef.current = {
+            x: Math.max(0, Math.floor(relX / THUMBNAIL_CELL)),
+            y: Math.max(0, Math.floor(relY / THUMBNAIL_CELL)),
+          }
+        } else {
+          dragOffsetRef.current = { x: 0, y: 0 }
+        }
       }
     },
     [startTimer]
@@ -122,7 +142,7 @@ export default function App() {
       const def = PIECE_MAP[activeData.definitionId]
       if (!def) { setPreviewPlacement(null); return }
 
-      const origin = { x: overData.x, y: overData.y }
+      const origin = { x: overData.x - dragOffsetRef.current.x, y: overData.y - dragOffsetRef.current.y }
       const cells = getAbsoluteCoords(def.baseShape, origin, activeData.rotation)
       const isValid = checkPlacement(
         def.baseShape,
@@ -161,10 +181,8 @@ export default function App() {
       const def = PIECE_MAP[definitionId]
       if (!def) return
 
-      // Use drop target cell as origin (top-left of piece shape).
-      // TODO (Iteration 4): compute offset from pointer position within piece shape
-      // for more natural placement UX.
-      const origin = { x: overData.x, y: overData.y }
+      // Subtract pointer offset so the piece cell under the cursor lands on the hovered cell
+      const origin = { x: overData.x - dragOffsetRef.current.x, y: overData.y - dragOffsetRef.current.y }
 
       // Validate bounds before committing
       const coords = getAbsoluteCoords(def.baseShape, origin, rotation)

@@ -34,7 +34,7 @@ export function Sidebar({
             rotation={selectedPieceId === id ? selectedRotation : 0}
             isSelected={selectedPieceId === id}
             onSelect={() => onSelectPiece(id)}
-            onRotate={onRotatePiece}
+            onRotate={() => { if (selectedPieceId !== id) onSelectPiece(id); onRotatePiece() }}
           />
         ))}
         {inventoryPieceIds.length === 0 && (

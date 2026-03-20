@@ -1,9 +1,10 @@
 .wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.5rem;
+  padding: 0.5rem 1.2rem 1.2rem 0.5rem;
   border-radius: 0.75rem;
   cursor: grab;
   transition: transform 0.1s, background 0.1s;
@@ -36,17 +37,26 @@
 }
 
 .rotateBtn {
-  background: none;
-  border: none;
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fdf3dc;
+  border: 2px solid #a0845a;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.4rem;
   color: #3a2e0e;
-  opacity: 0.5;
-  padding: 0;
   line-height: 1;
-  transition: opacity 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .rotateBtn:hover {
-  opacity: 1;
+  background: #f5e0a0;
 }
