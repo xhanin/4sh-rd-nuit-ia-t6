@@ -85,6 +85,44 @@ export default function App() {
     isValid: boolean
   } | null>(null)
 
+  // Audio refs
+  const gameAudioRef = useRef<HTMLAudioElement>(null)
+  const winAudioRef = useRef<HTMLAudioElement>(null)
+  const prevScreenRef = useRef(screen)
+  const prevLevelRef = useRef(currentLevel)
+
+  // Audio control logic
+  useEffect(() => {
+    if (screen !== 'game') {
+      gameAudioRef.current?.pause()
+      winAudioRef.current?.pause()
+      prevScreenRef.current = screen
+      prevLevelRef.current = currentLevel
+      return
+    }
+
+    const justEnteredGame = prevScreenRef.current !== 'game'
+    const changedLevel = prevLevelRef.current !== currentLevel
+
+    if (gameStatus === 'level_complete' || gameStatus === 'game_won') {
+      gameAudioRef.current?.pause()
+      if (winAudioRef.current) {
+        winAudioRef.current.currentTime = 0
+        winAudioRef.current.play().catch(console.warn)
+      }
+    } else {
+      if (justEnteredGame || changedLevel) {
+        if (gameAudioRef.current) {
+          gameAudioRef.current.currentTime = 0
+        }
+      }
+      gameAudioRef.current?.play().catch(console.warn)
+    }
+
+    prevScreenRef.current = screen
+    prevLevelRef.current = currentLevel
+  }, [screen, gameStatus, currentLevel])
+
   // Keyboard shortcut: R to rotate selected piece
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -273,6 +311,9 @@ export default function App() {
           activeId={activeDrag ? `inventory-${activeDrag.definitionId}` : null}
           rotation={activeDrag?.rotation ?? 0}
         />
+
+        <audio ref={gameAudioRef} src="/game.mp3" loop />
+        <audio ref={winAudioRef} src="/winwin.mov" />
       </div>
     </DndContext>
   )
