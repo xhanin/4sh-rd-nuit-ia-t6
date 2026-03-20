@@ -61,7 +61,6 @@ export default function App() {
   const restartLevel = useGameStore((s) => s.restartLevel)
   const restartGame = useGameStore((s) => s.restartGame)
   const advanceToNextLevel = useGameStore((s) => s.advanceToNextLevel)
-  const validateBoard = useGameStore((s) => s.validateBoard)
 
   // Hooks
   useGameTimer()
