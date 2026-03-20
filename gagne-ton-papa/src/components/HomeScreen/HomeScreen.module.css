@@ -1,0 +1,42 @@
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.imageContainer {
+  position: relative;
+  height: 100%;
+  max-width: 100%;
+  /* Maintain the aspect ratio of the content (1024x748 is ~1.36) */
+  aspect-ratio: 1024 / 748;
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.playButtonArea {
+  position: absolute;
+  left: 13%;
+  top: 80.5%;
+  width: 34%;
+  height: 13.5%;
+  cursor: pointer;
+  background-color: transparent;
+  z-index: 10;
+  /* Optional: slightly darken on hover to give feedback */
+  transition: background-color 0.2s;
+}
+
+.playButtonArea:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

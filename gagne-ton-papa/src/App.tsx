@@ -26,6 +26,7 @@ import { GameDragOverlay } from '@/components/pieces/DragOverlay'
 import { LevelCompleteModal } from '@/components/modals/LevelCompleteModal'
 import { GameWonModal } from '@/components/modals/GameWonModal'
 import { HintModal } from '@/components/modals/HintModal'
+import { HomeScreen } from '@/components/HomeScreen/HomeScreen'
 
 import { PIECE_MAP } from '@/constants/pieces'
 import { getLevelConfig } from '@/constants/levels'
@@ -48,6 +49,9 @@ export default function App() {
   const selectedPieceId = useGameStore((s) => s.selectedPieceId)
   const selectedRotation = useGameStore((s) => s.selectedRotation)
   const elapsedMs = useGameStore((s) => s.elapsedMs)
+
+  // App navigation state
+  const [screen, setScreen] = useState<'home' | 'game'>('home')
 
   // Store actions
   const placePiece = useGameStore((s) => s.placePiece)
@@ -200,13 +204,17 @@ export default function App() {
   // Hint highlighted cells
   const highlightedCells = activeHint
     ? (() => {
-        const def = PIECE_MAP[activeHint.pieceId]
-        if (!def) return []
-        return getAbsoluteCoords(def.baseShape, activeHint.origin, activeHint.rotation)
-      })()
+      const def = PIECE_MAP[activeHint.pieceId]
+      if (!def) return []
+      return getAbsoluteCoords(def.baseShape, activeHint.origin, activeHint.rotation)
+    })()
     : []
 
   const levelName = getLevelConfig(currentLevel).name
+
+  if (screen === 'home') {
+    return <HomeScreen onPlay={() => setScreen('game')} />
+  }
 
   return (
     <DndContext
