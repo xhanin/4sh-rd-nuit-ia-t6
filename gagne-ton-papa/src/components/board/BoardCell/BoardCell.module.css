@@ -1,0 +1,22 @@
+.cell {
+  border-radius: 0.625rem;
+  background: #e8dcc8;
+  box-shadow: inset 0 4px 8px rgba(54, 46, 28, 0.18);
+  transition: background 0.1s, box-shadow 0.1s;
+  flex-shrink: 0;
+}
+
+.over {
+  background: #d4c9a8;
+  box-shadow: inset 0 4px 8px rgba(54, 46, 28, 0.3), 0 0 0 2px #4A90D9;
+}
+
+.highlighted {
+  background: #fff3cd;
+  box-shadow: inset 0 4px 8px rgba(54, 46, 28, 0.12), 0 0 0 2px #efc900;
+}
+
+.occupied {
+  /* PlacedPieceLayer renders colors, this just dims the inset */
+  box-shadow: none;
+}

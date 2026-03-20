@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #8a7a50;
+  background: #e8dcc8;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.active {
+  background: #efc900;
+  color: #3a2e0e;
+}
+
+.done {
+  background: #bbf7d0;
+  color: #166534;
+}

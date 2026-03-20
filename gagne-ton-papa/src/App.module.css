@@ -1,0 +1,18 @@
+/* src/App.module.css */
+
+.app {
+  min-height: 100vh;
+  background: #f5efe0;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 6rem;   /* below fixed header */
+  padding-bottom: 8rem; /* above fixed footer */
+  padding-right: 176px; /* beside fixed sidebar */
+  min-height: 100vh;
+  box-sizing: border-box;
+}

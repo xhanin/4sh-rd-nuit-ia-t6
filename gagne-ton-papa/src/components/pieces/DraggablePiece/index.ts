@@ -1,0 +1,1 @@
+export { DraggablePiece } from './DraggablePiece'

@@ -1,0 +1,13 @@
+.timer {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+  color: #3a2e0e;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.running {
+  opacity: 1;
+}
