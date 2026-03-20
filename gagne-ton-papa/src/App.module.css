@@ -2,8 +2,54 @@
 
 .app {
   min-height: 100vh;
-  background: #f5efe0;
   font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Wood grain base */
+  background-color: #b5813a;
+
+  /* Layered gradients: veins + planks */
+  background-image:
+    /* Fine grain lines */
+    repeating-linear-gradient(
+      92deg,
+      transparent 0px,
+      transparent 18px,
+      rgba(0, 0, 0, 0.03) 18px,
+      rgba(0, 0, 0, 0.03) 19px
+    ),
+    repeating-linear-gradient(
+      88deg,
+      transparent 0px,
+      transparent 34px,
+      rgba(255, 255, 255, 0.04) 34px,
+      rgba(255, 255, 255, 0.04) 36px
+    ),
+    /* Plank horizontal bands */
+    repeating-linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.06) 0px,
+      transparent 3px,
+      transparent 110px,
+      rgba(0, 0, 0, 0.10) 113px,
+      rgba(0, 0, 0, 0.14) 115px,
+      transparent 118px,
+      transparent 228px,
+      rgba(0, 0, 0, 0.10) 231px,
+      rgba(0, 0, 0, 0.14) 233px,
+      transparent 236px
+    ),
+    /* Warm colour variation across planks */
+    repeating-linear-gradient(
+      180deg,
+      #c48a3f 0px,
+      #b5783a 60px,
+      #a96c2e 115px,
+      #bf8540 116px,
+      #c9913f 175px,
+      #b8793c 230px,
+      #ac6e30 233px,
+      #c08440 234px
+    );
 }
 
 .main {
