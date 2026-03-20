@@ -1,37 +1,20 @@
 // src/constants/levels.ts
-// Level configurations: 4 levels with increasing grid size and piece count.
-// Pieces are cumulative: Penta N includes the first N pieces.
+// Level configurations sourced from puzzles.md.
 
 import type { LevelConfig } from '@/types'
 
 export const LEVEL_CONFIGS: LevelConfig[] = [
   {
+    // puzzles.md — Niveau 1 : L'approche classique
+    // Solution:
+    //   5  E  E  7  7
+    //   5  E  E  7  V1
+    //   5  5  5  7  7
     level: 1,
-    name: 'Penta 3',
-    cols: 3,
-    rows: 5,
-    pieceIds: ['L', 'J', 'I'],
-  },
-  {
-    level: 2,
-    name: 'Penta 4',
-    cols: 4,
-    rows: 5,
-    pieceIds: ['L', 'J', 'I', 'T'],
-  },
-  {
-    level: 3,
-    name: 'Penta 5',
+    name: 'Niveau 1',
     cols: 5,
-    rows: 5,
-    pieceIds: ['L', 'J', 'I', 'T', 'S'],
-  },
-  {
-    level: 4,
-    name: 'Penta 6',
-    cols: 6,
-    rows: 5,
-    pieceIds: ['L', 'J', 'I', 'T', 'S', 'O'],
+    rows: 3,
+    pieceIds: ['5', '7', 'E', 'V1'],
   },
 ]
 
