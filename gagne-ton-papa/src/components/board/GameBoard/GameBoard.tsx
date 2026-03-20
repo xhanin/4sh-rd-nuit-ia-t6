@@ -14,6 +14,7 @@ interface GameBoardProps {
   board: BoardCellType[][]
   placedPieces: PlacedPiece[]
   highlightedCells?: CellCoord[]
+  previewPlacement?: { cells: CellCoord[]; color: string; isValid: boolean } | null
 }
 
 export function GameBoard({
@@ -23,6 +24,7 @@ export function GameBoard({
   board,
   placedPieces,
   highlightedCells = [],
+  previewPlacement,
 }: GameBoardProps) {
   const highlightSet = new Set(highlightedCells.map((c) => `${c.x},${c.y}`))
 
@@ -57,6 +59,29 @@ export function GameBoard({
 
         {/* Colored piece overlays */}
         <PlacedPieceLayer placedPieces={placedPieces} />
+
+        {/* Drag preview */}
+        {previewPlacement && (
+          <div className={styles.previewLayer}>
+            {previewPlacement.cells.map(({ x, y }) => (
+              <div
+                key={`preview-${x}-${y}`}
+                className={styles.previewCell}
+                style={{
+                  left: x * (CELL_SIZE + CELL_GAP),
+                  top: y * (CELL_SIZE + CELL_GAP),
+                  width: CELL_SIZE,
+                  height: CELL_SIZE,
+                  backgroundColor: previewPlacement.color,
+                  opacity: previewPlacement.isValid ? 0.6 : 0.3,
+                  outline: previewPlacement.isValid
+                    ? '2px solid rgba(255,255,255,0.7)'
+                    : '2px solid rgba(220,50,50,0.7)',
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

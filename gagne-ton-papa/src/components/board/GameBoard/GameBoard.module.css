@@ -16,3 +16,15 @@
   display: grid;
   position: relative;
 }
+
+.previewLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.previewCell {
+  position: absolute;
+  border-radius: 10px;
+}

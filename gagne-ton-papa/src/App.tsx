@@ -1,7 +1,7 @@
 // src/App.tsx
 // Root component. Owns the DnD context and wires the store to the UI.
 
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useState } from 'react'
 import {
   DndContext,
   PointerSensor,
@@ -9,6 +9,7 @@ import {
   useSensor,
   useSensors,
   type DragEndEvent,
+  type DragOverEvent,
   type DragStartEvent,
 } from '@dnd-kit/core'
 
@@ -29,7 +30,8 @@ import { HintModal } from '@/components/modals/HintModal'
 import { PIECE_MAP } from '@/constants/pieces'
 import { getLevelConfig } from '@/constants/levels'
 import { getAbsoluteCoords } from '@/game/geometry'
-import type { Rotation } from '@/types'
+import { checkPlacement } from '@/game/validation'
+import type { Rotation, CellCoord } from '@/types'
 
 import styles from './App.module.css'
 
@@ -61,6 +63,18 @@ export default function App() {
 
   const levelConfig = getLevelConfig(currentLevel)
 
+  // Local drag state
+  const [activeDrag, setActiveDrag] = useState<{
+    definitionId: string
+    rotation: Rotation
+  } | null>(null)
+
+  const [previewPlacement, setPreviewPlacement] = useState<{
+    cells: CellCoord[]
+    color: string
+    isValid: boolean
+  } | null>(null)
+
   // Keyboard shortcut: R to rotate selected piece
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -79,14 +93,55 @@ export default function App() {
   )
 
   const handleDragStart = useCallback(
-    (_event: DragStartEvent) => {
+    (event: DragStartEvent) => {
       startTimer()
+      const data = event.active.data.current as {
+        type: string
+        definitionId: string
+        rotation: Rotation
+      } | undefined
+      if (data) {
+        setActiveDrag({ definitionId: data.definitionId, rotation: data.rotation })
+      }
     },
     [startTimer]
   )
 
+  const handleDragOver = useCallback(
+    (event: DragOverEvent) => {
+      const activeData = event.active.data.current as {
+        type: string
+        definitionId: string
+        rotation: Rotation
+      } | undefined
+      if (!activeData) { setPreviewPlacement(null); return }
+
+      const overData = event.over?.data.current as { x: number; y: number } | undefined
+      if (!overData) { setPreviewPlacement(null); return }
+
+      const def = PIECE_MAP[activeData.definitionId]
+      if (!def) { setPreviewPlacement(null); return }
+
+      const origin = { x: overData.x, y: overData.y }
+      const cells = getAbsoluteCoords(def.baseShape, origin, activeData.rotation)
+      const isValid = checkPlacement(
+        def.baseShape,
+        origin,
+        activeData.rotation,
+        board,
+        levelConfig.cols,
+        levelConfig.rows
+      )
+      setPreviewPlacement({ cells, color: def.color, isValid })
+    },
+    [board, levelConfig]
+  )
+
   const handleDragEnd = useCallback(
     (event: DragEndEvent) => {
+      setActiveDrag(null)
+      setPreviewPlacement(null)
+
       const { active, over } = event
       if (!over) return
 
@@ -136,7 +191,12 @@ export default function App() {
   const levelName = getLevelConfig(currentLevel).name
 
   return (
-    <DndContext sensors={sensors} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+    <DndContext
+      sensors={sensors}
+      onDragStart={handleDragStart}
+      onDragOver={handleDragOver}
+      onDragEnd={handleDragEnd}
+    >
       <div className={styles.app}>
         <Header />
 
@@ -148,6 +208,7 @@ export default function App() {
             board={board}
             placedPieces={placedPieces}
             highlightedCells={highlightedCells}
+            previewPlacement={previewPlacement}
           />
         </main>
 
@@ -182,7 +243,10 @@ export default function App() {
           onDismiss={dismissHint}
         />
 
-        <GameDragOverlay activeId={null} rotation={selectedRotation} />
+        <GameDragOverlay
+          activeId={activeDrag ? `inventory-${activeDrag.definitionId}` : null}
+          rotation={activeDrag?.rotation ?? 0}
+        />
       </div>
     </DndContext>
   )
