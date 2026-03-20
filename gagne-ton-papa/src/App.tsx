@@ -287,7 +287,6 @@ export default function App() {
         <Footer
           onRestart={restartLevel}
           onHint={requestHint}
-          onValidate={validateBoard}
         />
 
         {/* Modals */}

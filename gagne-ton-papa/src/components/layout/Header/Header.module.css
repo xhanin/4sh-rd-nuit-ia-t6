@@ -6,7 +6,7 @@
   z-index: 50;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1rem 1.5rem;
   background: #efc900;
   border-bottom-left-radius: 1.5rem;
@@ -25,6 +25,8 @@
 }
 
 .actions {
+  position: absolute;
+  right: 1.5rem;
   display: flex;
   align-items: center;
   gap: 0.75rem;

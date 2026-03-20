@@ -5,10 +5,9 @@ import styles from './Footer.module.css'
 interface FooterProps {
   onRestart: () => void
   onHint: () => void
-  onValidate: () => void
 }
 
-export function Footer({ onRestart, onHint, onValidate }: FooterProps) {
+export function Footer({ onRestart, onHint }: FooterProps) {
   return (
     <footer className={styles.footer}>
       <button
@@ -27,15 +26,6 @@ export function Footer({ onRestart, onHint, onValidate }: FooterProps) {
       >
         <span className={styles.icon}>💡</span>
         <span className={styles.label}>INDICE</span>
-      </button>
-
-      <button
-        className={`${styles.btn} ${styles.validate}`}
-        onClick={onValidate}
-        aria-label="Valider"
-      >
-        <span className={styles.icon}>✓</span>
-        <span className={styles.label}>VALIDER</span>
       </button>
     </footer>
   )

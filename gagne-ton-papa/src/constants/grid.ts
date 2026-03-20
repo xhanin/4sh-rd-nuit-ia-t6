@@ -1,7 +1,7 @@
 // src/constants/grid.ts
 
 /** Visual size of each cell in pixels */
-export const CELL_SIZE = 100
+export const CELL_SIZE = 150
 
 /** Gap between cells in pixels */
 export const CELL_GAP = 8
