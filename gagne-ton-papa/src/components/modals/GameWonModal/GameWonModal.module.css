@@ -11,10 +11,13 @@
 .modal {
   background: linear-gradient(135deg, #fff9e0, #fff);
   border-radius: 2rem;
-  padding: 3rem 2.5rem;
+  padding: 2.5rem 2.5rem 2rem;
   text-align: center;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  min-width: 280px;
+  min-width: 320px;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .emoji {
@@ -42,6 +45,111 @@
   color: #efc900;
   text-shadow: 0 2px 0 #b89a00;
   margin-bottom: 1.5rem;
+}
+
+/* Name input form */
+.nameForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.nameInput {
+  width: 100%;
+  max-width: 240px;
+  padding: 0.65rem 1rem;
+  border: 2px solid #e0d6b8;
+  border-radius: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #3a2e0e;
+  background: #fffef5;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.nameInput:focus {
+  border-color: #efc900;
+}
+
+.nameInput::placeholder {
+  color: #c0b690;
+  font-weight: 400;
+}
+
+.saveBtn {
+  background: #efc900;
+  color: #3a2e0e;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.65rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 0 0 #b89a00;
+  transition: transform 0.08s;
+}
+
+.saveBtn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 #b89a00;
+}
+
+/* Leaderboard */
+.leaderboard {
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.leaderboardTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #3a2e0e;
+  margin: 0 0 0.5rem;
+}
+
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.entryCurrent {
+  background: rgba(239, 201, 0, 0.18);
+  font-weight: 700;
+}
+
+.rank {
+  min-width: 1.75rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.entryName {
+  flex: 1;
+  text-align: left;
+  color: #3a2e0e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.entryTime {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: #8a7a50;
 }
 
 .btn {
