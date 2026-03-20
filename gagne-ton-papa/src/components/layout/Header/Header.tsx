@@ -13,7 +13,7 @@ export function Header() {
 
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>GAGNE TON PAPA</h1>
+      <h1 className={styles.title}>AMAMICOULAS</h1>
       <div className={styles.actions}>
         <TimerDisplay elapsedMs={elapsedMs} isRunning={isRunning} />
         <button className={styles.iconBtn} aria-label="Paramètres">
