@@ -1,0 +1,377 @@
+<!doctype html>
+
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>GAGNE TON PAPA | SOLO EDITION</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,800&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#6c5a00",
+                            "secondary-fixed": "#ffc3bd",
+                            "surface-tint": "#6c5a00",
+                            "on-secondary": "#ffefed",
+                            "primary-fixed-dim": "#efc900",
+                            "on-primary-fixed": "#453900",
+                            "surface-container": "#f7e6c8",
+                            secondary: "#b7131a",
+                            "surface-container-high": "#f2e1c1",
+                            "on-secondary-fixed-variant": "#a60010",
+                            "surface-container-low": "#ffefd3",
+                            "on-secondary-container": "#94000d",
+                            "inverse-primary": "#ffd709",
+                            "error-dim": "#b92902",
+                            "on-background": "#362e1c",
+                            "on-tertiary-fixed-variant": "#003b6a",
+                            "on-tertiary-fixed": "#001932",
+                            "secondary-dim": "#a40010",
+                            "primary-dim": "#5e4e00",
+                            "on-secondary-fixed": "#700007",
+                            "on-primary-fixed-variant": "#665500",
+                            "secondary-container": "#ffc3bd",
+                            "tertiary-fixed": "#76b4ff",
+                            "tertiary-container": "#76b4ff",
+                            "on-tertiary": "#edf3ff",
+                            "on-primary": "#fff2cd",
+                            "on-surface-variant": "#645a46",
+                            background: "#fff5e8",
+                            "primary-container": "#ffd709",
+                            "surface-dim": "#e5d2af",
+                            tertiary: "#005da4",
+                            "on-error": "#ffefec",
+                            "surface-container-lowest": "#ffffff",
+                            "secondary-fixed-dim": "#ffb0a7",
+                            "surface-bright": "#fff5e8",
+                            "on-tertiary-container": "#00325b",
+                            "surface-variant": "#eddbb9",
+                            "on-error-container": "#520c00",
+                            surface: "#fff5e8",
+                            "outline-variant": "#b9ac94",
+                            "primary-fixed": "#ffd709",
+                            error: "#b02500",
+                            "error-container": "#f95630",
+                            outline: "#817660",
+                            "surface-container-highest": "#eddbb9",
+                            "on-surface": "#362e1c",
+                            "inverse-surface": "#130d02",
+                            "tertiary-dim": "#00518f",
+                            "on-primary-container": "#5b4b00",
+                            "tertiary-fixed-dim": "#56a6ff",
+                            "inverse-on-surface": "#a89b84",
+                        },
+                        fontFamily: {
+                            headline: ["Plus Jakarta Sans"],
+                            body: ["Plus Jakarta Sans"],
+                            label: ["Plus Jakarta Sans"],
+                        },
+                        borderRadius: {
+                            DEFAULT: "1rem",
+                            lg: "2rem",
+                            xl: "3rem",
+                            full: "9999px",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style>
+            .wood-texture {
+                background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBuQHHKrWL1XnDwv_x4Hz5Uwh2ZUSdQ2wYkBBaiT_KAQkm-IU_1o0GZErkWdy9pq0Ik8_FO-mT5ZdJGdCmbyw7Q3SywctM2bulQkEL-x6QG6E_m1oehvi92SS9fOwDR1n_BQUOKWbnRH7qOic8gu73RlXOTeil2cKojcHq0wuZFqjqH6_LcNbFMhGQCNwaW6w1EyXKRunumspCyuGwSUBi1J9be_vIfERrC6DXMQGUgka9qdsUbZYHzrUi9A9-VF44zj7V3GH3K);
+                background-color: #fff5e8;
+            }
+            .wooden-block-shadow {
+                box-shadow: 0 6px 0 0 rgba(0, 0, 0, 0.15);
+            }
+            .indented-slot {
+                box-shadow: inset 0 4px 8px rgba(54, 46, 28, 0.2);
+            }
+        </style>
+    </head>
+    <body
+        class="wood-texture min-h-screen font-body text-on-background overflow-hidden select-none"
+    >
+        <!-- TopAppBar -->
+        <header
+            class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-6 bg-yellow-400 dark:bg-yellow-500 rounded-b-[3rem] border-b-8 border-amber-600/30 shadow-[0_8px_0_0_rgba(185,172,148,0.3)]"
+        >
+            <div class="flex items-center gap-4">
+                <span
+                    class="text-amber-900 dark:text-amber-950 font-black italic text-3xl uppercase tracking-tight font-['Plus_Jakarta_Sans']"
+                >
+                    GAGNE TON PAPA
+                </span>
+            </div>
+            <div class="flex items-center gap-6">
+                <button
+                    class="bg-white/40 p-3 rounded-full hover:scale-105 active:translate-y-1 transition-all duration-100 text-amber-900"
+                >
+                    <span
+                        class="material-symbols-outlined text-4xl"
+                        data-icon="timer"
+                        >timer</span
+                    >
+                </button>
+                <button
+                    class="bg-white/40 p-3 rounded-full hover:scale-105 active:translate-y-1 transition-all duration-100 text-amber-900"
+                >
+                    <span
+                        class="material-symbols-outlined text-4xl"
+                        data-icon="settings"
+                        >settings</span
+                    >
+                </button>
+            </div>
+        </header>
+        <!-- SideNavBar (Toy Tray) -->
+        <aside
+            class="fixed right-0 top-0 h-full z-40 flex flex-col items-center pt-32 pb-8 bg-orange-100 dark:bg-orange-200/20 w-44 rounded-l-[4rem] border-l-8 border-amber-600/20 shadow-[-10px_0_30px_rgba(54,46,28,0.06)] overflow-y-auto"
+        >
+            <div class="mb-6 text-center">
+                <h2
+                    class="text-amber-900 font-extrabold font-['Plus_Jakarta_Sans'] text-xl tracking-tight"
+                >
+                    INVENTAIRE
+                </h2>
+                <p class="text-on-surface-variant text-xs font-bold uppercase">
+                    Solo Edition
+                </p>
+            </div>
+            <div class="flex flex-col gap-6 items-center w-full px-4">
+                <!-- Piece 1: L-Block -->
+                <div
+                    class="bg-blue-500 w-20 h-28 rounded-xl wooden-block-shadow flex items-center justify-center hover:scale-110 active:scale-95 transition-all cursor-grab"
+                    title="L Block"
+                >
+                    <span
+                        class="material-symbols-outlined text-white text-5xl"
+                        data-icon="category"
+                        >category</span
+                    >
+                </div>
+                <!-- Piece 2: T-Block -->
+                <div
+                    class="bg-secondary w-24 h-20 rounded-xl wooden-block-shadow flex items-center justify-center hover:scale-110 active:scale-95 transition-all cursor-grab"
+                    title="T Block"
+                >
+                    <span
+                        class="material-symbols-outlined text-white text-5xl"
+                        data-icon="change_history"
+                        >change_history</span
+                    >
+                </div>
+                <!-- Piece 3: Rectangle -->
+                <div
+                    class="bg-green-500 w-16 h-32 rounded-xl wooden-block-shadow flex items-center justify-center hover:scale-110 active:scale-95 transition-all cursor-grab"
+                    title="Bar Block"
+                >
+                    <span
+                        class="material-symbols-outlined text-white text-5xl"
+                        data-icon="square"
+                        >square</span
+                    >
+                </div>
+                <!-- Piece 4: Small Block -->
+                <div
+                    class="bg-orange-500 w-20 h-20 rounded-xl wooden-block-shadow flex items-center justify-center hover:scale-110 active:scale-95 transition-all cursor-grab"
+                    title="Box Block"
+                >
+                    <span
+                        class="material-symbols-outlined text-white text-5xl"
+                        data-icon="extension"
+                        >extension</span
+                    >
+                </div>
+                <!-- Piece 5: Pentagon -->
+                <div
+                    class="bg-primary-container w-24 h-24 rounded-full wooden-block-shadow flex items-center justify-center hover:scale-110 active:scale-95 transition-all cursor-grab"
+                    title="Round Block"
+                >
+                    <span
+                        class="material-symbols-outlined text-on-primary-container text-5xl"
+                        data-icon="pentagon"
+                        >pentagon</span
+                    >
+                </div>
+            </div>
+            <div class="mt-auto pt-8">
+                <button
+                    class="bg-blue-400 text-white font-black px-6 py-4 rounded-full shadow-inner scale-110 active:scale-90 transition-all uppercase tracking-widest text-lg"
+                >
+                    VALIDER
+                </button>
+            </div>
+        </aside>
+        <!-- Main Game Canvas -->
+        <main
+            class="pt-36 pr-44 pb-32 pl-8 h-screen flex flex-col items-center justify-center"
+        >
+            <!-- Game Board Container -->
+            <div
+                class="relative bg-surface-container rounded-[4rem] p-12 border-b-[12px] border-amber-800/20 shadow-2xl flex flex-col items-center max-w-4xl w-full"
+            >
+                <div class="mb-8 text-center">
+                    <h1
+                        class="text-4xl font-black text-on-surface uppercase tracking-tighter"
+                    >
+                        NIVEAU 1
+                    </h1>
+                    <div
+                        class="h-2 w-32 bg-primary-container mx-auto rounded-full mt-2"
+                    ></div>
+                </div>
+                <!-- 3x5 Grid Board -->
+                <div
+                    class="grid grid-cols-5 gap-4 bg-surface-dim p-8 rounded-[3rem] border-b-8 border-amber-900/10"
+                >
+                    <!-- Row 1 -->
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <!-- Row 2 -->
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot flex items-center justify-center"
+                    >
+                        <!-- Placeholder piece placed -->
+                        <div
+                            class="w-20 h-20 bg-primary-container rounded-xl wooden-block-shadow animate-pulse"
+                        ></div>
+                    </div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <!-- Row 3 -->
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                    <div
+                        class="w-24 h-24 bg-surface-container-low rounded-2xl indented-slot"
+                    ></div>
+                </div>
+                <!-- Decorative Board Logo -->
+                <div
+                    class="absolute -bottom-6 -left-6 bg-white rotate-[-12deg] p-4 rounded-xl shadow-lg border-4 border-primary-container"
+                >
+                    <span class="font-black text-primary italic text-xl"
+                        >3-4 ANS</span
+                    >
+                </div>
+            </div>
+        </main>
+        <!-- Bottom Action Bar -->
+        <footer
+            class="fixed bottom-0 left-0 w-full pr-44 pb-10 flex justify-center gap-8 z-30"
+        >
+            <!-- Recommencer Button -->
+            <button class="group flex flex-col items-center gap-2">
+                <div
+                    class="w-24 h-24 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center shadow-[0_8px_0_0_#94000d] group-active:translate-y-1 group-active:shadow-[0_4px_0_0_#94000d] transition-all"
+                >
+                    <span
+                        class="material-symbols-outlined text-5xl font-black"
+                        data-icon="restart_alt"
+                        >restart_alt</span
+                    >
+                </div>
+                <span
+                    class="text-secondary font-black text-sm tracking-widest uppercase"
+                    >RECOMMENCER</span
+                >
+            </button>
+            <!-- Indice Button -->
+            <button class="group flex flex-col items-center gap-2">
+                <div
+                    class="w-28 h-28 bg-tertiary-container text-on-tertiary-container rounded-full flex items-center justify-center shadow-[0_8px_0_0_#00325b] group-active:translate-y-1 group-active:shadow-[0_4px_0_0_#00325b] transition-all"
+                >
+                    <span
+                        class="material-symbols-outlined text-6xl font-black"
+                        data-icon="lightbulb"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >lightbulb</span
+                    >
+                </div>
+                <span
+                    class="text-tertiary font-black text-lg tracking-widest uppercase"
+                    >INDICE</span
+                >
+            </button>
+            <!-- Valider Button -->
+            <button class="group flex flex-col items-center gap-2">
+                <div
+                    class="w-24 h-24 bg-green-400 text-green-900 rounded-full flex items-center justify-center shadow-[0_8px_0_0_#166534] group-active:translate-y-1 group-active:shadow-[0_4px_0_0_#166534] transition-all"
+                >
+                    <span
+                        class="material-symbols-outlined text-5xl font-black"
+                        data-icon="check"
+                        >check</span
+                    >
+                </div>
+                <span
+                    class="text-green-800 font-black text-sm tracking-widest uppercase"
+                    >VALIDER</span
+                >
+            </button>
+        </footer>
+        <!-- Playful Background Decor -->
+        <div class="fixed top-40 left-10 pointer-events-none opacity-20">
+            <span
+                class="material-symbols-outlined text-9xl text-amber-900 rotate-12"
+                data-icon="potted_plant"
+                >potted_plant</span
+            >
+        </div>
+        <div class="fixed bottom-20 left-20 pointer-events-none opacity-10">
+            <span
+                class="material-symbols-outlined text-[12rem] text-amber-900 -rotate-12"
+                data-icon="toys"
+                >toys</span
+            >
+        </div>
+    </body>
+</html>
